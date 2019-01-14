@@ -8,7 +8,12 @@ This example application shows how to use Akka gRPC to both expose and use gRPC 
 
 For detailed documentation refer to https://www.playframework.com/documentation/latest/Home and https://developer.lightbend.com/docs/akka-grpc/current/ .
 
+## Obtaining this example
 
+You may download the code from [GitHub](https://github.com/playframework/play-scala-grpc-example) directly or you can 
+get kickstart you Play gRPC project on [Lightbend's Tech Hub](https://developer.lightbend.com/start/?group=play&project=play-scala-grpc-example). 
+
+ 
 ## Preparing
 
 As gRPC requires using HTTP/2 some additional steps have to be taken before you start the project.
