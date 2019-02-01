@@ -36,7 +36,7 @@ have paths correspond to their "methods", yet this is handled by its internal in
 not concern themselves about the exact names – clients too are generated from the appropriate 
 `app/protobuf/helloworld.proto` file after all.
 
-You can read more about [Service gRPC from a Play App](https://developer.lightbend.com/docs/akka-grpc/current/play-framework.html#serving-grpc-from-a-play-framework-app) in the docs.
+You can read more about [Service gRPC from a Play App](https://developer.lightbend.com/docs/play-grpc/current/serving-grpc.html) in the docs.
 
 ### 2.b Injecting Akka-gRPC Clients 
 
