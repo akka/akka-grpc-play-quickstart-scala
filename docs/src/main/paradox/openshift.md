@@ -7,6 +7,7 @@ Install the following:
 * [Docker](https://docs.docker.com/install/)
 * [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 * OpenShift's CLI: [`oc`](https://docs.openshift.com/container-platform/3.10/cli_reference/get_started_cli.html#installing-the-cli) (["Installing the CLI"](https://docs.openshift.com/container-platform/3.10/cli_reference/get_started_cli.html#installing-the-cli))
+* [`kustomize`](https://github.com/kubernetes-sigs/kustomize) (v2.0.0+)
 * [Sbt](https://www.scala-sbt.org/)
 
 
@@ -41,7 +42,7 @@ export OPENSHIFT_PROJECT=play-scala-grpc-example
 export IMAGE=play-scala-grpc-example
 export TAG=1.0-SNAPSHOT
 
-oc login https://OPENSHIFT_SERVER --token=$TOKEN
+oc login https://$OPENSHIFT_SERVER --token=$TOKEN
 oc new-project $OPENSHIFT_PROJECT
 ```
 
@@ -57,18 +58,10 @@ export DOCKER_REGISTRY=$DOCKER_REGISTRY_SERVER/$OPENSHIFT_PROJECT
 docker login -p $TOKEN -u unused $DOCKER_REGISTRY_SERVER
 docker tag $IMAGE:$TAG $DOCKER_REGISTRY/$IMAGE:$TAG
 docker push $DOCKER_REGISTRY/$IMAGE:$TAG
+kustomize build deployment/overlays/centralpark | oc apply -f -
 ```
 
-Apply your deployment : 
-
-```bash
-$ oc apply -f deployment/openshift-play-scala-grpc-example.yml
-deployment.apps "play-scala-grpc-example-v1-0-snapshot" configured
-service "play-scala-grpc-example" unchanged
-route.route.openshift.io "play-scala-grpc-route" created
-```
-
-and verify the deployment completed successfully:
+Finally, verify the deployment completed successfully:
 
 ```bash
 $ oc get all 
@@ -96,7 +89,7 @@ Test the application:
 
 ```bash
 $ curl -H "Host: myservice.example.org" \
-        http://$OPENSHIFT_PROJECT.centralpark.lightbend.com  
+        http://$OPENSHIFT_PROJECT.$OPENSHIFT_SERVER  
 Hello, Caplin!
 ```
 
