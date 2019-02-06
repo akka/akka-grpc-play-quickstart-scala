@@ -13,7 +13,7 @@ In both execution modes above, `sbt` will also generate the server and client so
 files, which happens thanks to the Akka gRPC plugin being enabled. 
 
 Finally, for your convenience, a self-signed certificate for 
-`CN='localhost' is provided in this example (see `conf/selfsigned.keystore`). Setting 
+`CN='localhost'` is provided in this example (see `conf/selfsigned.keystore`). Setting 
 up a keystore works different in DEV mode and PROD mode. Locate the `play.server.https.keyStore.path` setting in 
 `application.conf` and `build.sbt` for an example on how to set the keystore on each environment.
 
