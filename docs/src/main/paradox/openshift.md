@@ -6,7 +6,7 @@ Install the following:
 
 * [Docker](https://docs.docker.com/install/)
 * [Kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-* OpenShift's CLI: [`oc`](https://docs.openshift.com/container-platform/3.10/cli_reference/get_started_cli.html#installing-the-cli)
+* OpenShift's CLI: [`oc`](https://docs.openshift.com/container-platform/3.10/cli_reference/get_started_cli.html#installing-the-cli) (["Installing the CLI"](https://docs.openshift.com/container-platform/3.10/cli_reference/get_started_cli.html#installing-the-cli))
 * [Sbt](https://www.scala-sbt.org/)
 
 
