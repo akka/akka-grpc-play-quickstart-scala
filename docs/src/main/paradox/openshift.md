@@ -32,16 +32,23 @@ guide uses `centralpark.lightbend.com` as an example, you will have to use your 
 
 ### Running
 
-Login to OpenShift from your terminal and create the OpenShift project:
+First, let's prepare a few environment variables to make things easier:
 
-```bash
+```
 ## obtain the token from https://<your-openshift-server>/console/command-line
-export OPENSHIFT_SERVER=centralpark.lightbend.com
 export TOKEN=<my-token>
+export OPENSHIFT_SERVER=centralpark.lightbend.com
+export DOCKER_REGISTRY_SERVER=docker-registry-default.centralpark.lightbend.com
+export DOCKER_REGISTRY=$DOCKER_REGISTRY_SERVER/$OPENSHIFT_PROJECT
+## Use a project name that will not clash with other deployments on the cluster
 export OPENSHIFT_PROJECT=play-scala-grpc-example
 export IMAGE=play-scala-grpc-example
 export TAG=1.0-SNAPSHOT
+```
 
+Login to OpenShift from your terminal and create the OpenShift project:
+
+```bash
 oc login https://$OPENSHIFT_SERVER --token=$TOKEN
 oc new-project $OPENSHIFT_PROJECT
 ```
@@ -52,12 +59,13 @@ Container Registry in Lightbend's OpenShift cluster, CentralPark. You will have 
 ```bash
 sbt docker:publishLocal
 
-export DOCKER_REGISTRY_SERVER=docker-registry-default.centralpark.lightbend.com
-export DOCKER_REGISTRY=$DOCKER_REGISTRY_SERVER/$OPENSHIFT_PROJECT
-
 docker login -p $TOKEN -u unused $DOCKER_REGISTRY_SERVER
 docker tag $IMAGE:$TAG $DOCKER_REGISTRY/$IMAGE:$TAG
 docker push $DOCKER_REGISTRY/$IMAGE:$TAG
+
+## The `kustomize` step uses a `kustomization.yml` prepared for $DOCKER_REGISTRY/$IMAGE:$TAG. You will have to
+## create your own `deployment/overlays` folder (make a copy of `deployment/overlays/centralpark` and edit
+## `kustomization.yml`)
 kustomize build deployment/overlays/centralpark | oc apply -f -
 ```
 
