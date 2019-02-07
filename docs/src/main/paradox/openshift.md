@@ -66,8 +66,8 @@ docker push $DOCKER_REGISTRY/$IMAGE:$TAG
 
 ## The `kustomize` step uses a `kustomization.yml` prepared for $DOCKER_REGISTRY/$IMAGE:$TAG.
 ## You will have to create your own `deployment/overlays` folder (make a copy of
-## `deployment/overlays/mycluster` and edit `kustomization.yml`).
-kustomize build deployment/overlays/mycluster | oc apply -f -
+## `deployment/overlays/my-openshift-cluster` and edit `kustomization.yml`).
+kustomize build deployment/overlays/my-openshift-cluster | oc apply -f -
 ```
 
 Finally, verify the deployment completed successfully:
