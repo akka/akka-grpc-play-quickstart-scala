@@ -9,5 +9,5 @@ resources:
 
 images:
 - name: "play-scala-grpc-example"
-  newName: "docker-registry-default.centralpark.lightbend.com/play-scala-grpc-example/play-scala-grpc-example"
+  newName: "my-docker-registry.mycompany.com/play-scala-grpc-example/play-scala-grpc-example"
   newTag: "1.0-SNAPSHOT"
