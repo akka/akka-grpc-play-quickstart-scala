@@ -63,9 +63,9 @@ docker login -p $TOKEN -u unused $DOCKER_REGISTRY_SERVER
 docker tag $IMAGE:$TAG $DOCKER_REGISTRY/$IMAGE:$TAG
 docker push $DOCKER_REGISTRY/$IMAGE:$TAG
 
-## The `kustomize` step uses a `kustomization.yml` prepared for $DOCKER_REGISTRY/$IMAGE:$TAG. You will have to
-## create your own `deployment/overlays` folder (make a copy of `deployment/overlays/centralpark` and edit
-## `kustomization.yml`)
+## The `kustomize` step uses a `kustomization.yml` prepared for $DOCKER_REGISTRY/$IMAGE:$TAG.
+## You will have to create your own `deployment/overlays` folder (make a copy of
+## `deployment/overlays/centralpark` and edit `kustomization.yml`)
 kustomize build deployment/overlays/centralpark | oc apply -f -
 ```
 
