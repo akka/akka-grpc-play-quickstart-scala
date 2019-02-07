@@ -35,7 +35,7 @@ guide uses `centralpark.lightbend.com` as an example, you will have to use your 
 First, let's prepare a few environment variables to make things easier:
 
 ```
-## obtain the token from https://<your-openshift-server>/console/command-line
+## obtain the token at the Console UI on you Openshift server
 export TOKEN=<my-token>
 export OPENSHIFT_SERVER=centralpark.lightbend.com
 export DOCKER_REGISTRY_SERVER=docker-registry-default.centralpark.lightbend.com
